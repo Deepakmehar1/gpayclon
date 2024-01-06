@@ -5,7 +5,7 @@ const transectionSchema = new mongoose.Schema({
   sender: { type: ObjectId, ref: "User" },
   recever: { type: ObjectId, ref: "User" },
   amount: {
-    type: String,
+    type: Number,
     require: true,
   },
   date:{type:Date, default:Date.now}

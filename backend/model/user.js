@@ -20,9 +20,13 @@ const userSchema = new mongoose.Schema({
   },
   availableAmound: {
     type: Number,
-    default:0.00
+    default: 0.0,
   },
   transection: [{ type: ObjectId, ref: "Transection" }],
+  firstLogin: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 mongoose.model("User", userSchema);

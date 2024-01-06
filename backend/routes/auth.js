@@ -8,7 +8,6 @@ require("dotenv").config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post("/signup", (req, res) => {
-  console.log("hello");
   const { name, phoneNum, password, tPin } = req.body;
   if (!phoneNum || !password || !name || !tPin) {
     return res.status(422).json({ error: "please add all the fields" });
@@ -27,8 +26,8 @@ router.post("/signup", (req, res) => {
             name,
             tPin,
           });
-          user.save().then(user=>{
-            res.json({massage:"saved"})
+          user.save().then((user) => {
+            res.json({ massage: "saved" });
           });
         });
       })
@@ -53,8 +52,14 @@ router.post("/signin", (req, res) => {
           if (doMatch) {
             // res.json({message:"successfully signin"})
             const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET);
-            const { _id, name, phoneNum, transections, tPin, availableAmount } =
-              savedUser;
+            const {
+              _id,
+              name,
+              phoneNum,
+              transections,
+              availableAmount,
+              firstLogin,
+            } = savedUser;
             res.json({
               token,
               user: {
@@ -62,8 +67,8 @@ router.post("/signin", (req, res) => {
                 name,
                 phoneNum,
                 transections,
-                tPin,
                 availableAmount,
+                firstLogin,
               },
             });
           } else {
