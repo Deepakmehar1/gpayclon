@@ -10,7 +10,12 @@ router.get("/mytransection", requireLogin, (req, res) => {
     .select("-_id -phoneNum -availableAmound -password -tPin")
     // .populate("transection", "_id sender recever amount date")
     .then((transection) => {
-      res.json({ transection: transection.transaction });
+      if (!transection.transection == "") {
+        console.log(transection);
+        return res.json({ transection: transection.transection });
+      } else {
+        return res.status(402).json({ massege: "you had no transection yet" });
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -128,7 +133,7 @@ router.get("/search-user", requireLogin, (req, res) => {
   } else {
     res.status(500).send("server error");
   } */
-  /*
+/*
   User.findOne({ _id: req.params._id })
     .then((user) => {
       if (!amount) {
@@ -145,7 +150,7 @@ router.get("/search-user", requireLogin, (req, res) => {
           try {
             User.updateMany(
               { _id: { $in: [req.user._id, req.params._id] } },
-              { $push: { transaction: transection._id } },
+              { $push: { transection: transection._id } },
               { $set: { availableAmound: availableAmound - amount } },
               { $set: { availableAmound: availableAmound + amount } },
               { new: true }
@@ -170,35 +175,50 @@ router.get("/search-user", requireLogin, (req, res) => {
     });
 }); */
 
-router.post("/user/:_id", requireLogin, (req, res) => {
+router.post("/user/:_id/transfer", requireLogin, (req, res) => {
   const { amount, tPin } = req.body;
-  if (!amount) {
+  if (amount == 0 || req.user.availableAmound < amount) {
+    console.log("minimum 1 rupees or ensufiicient balenced");
     return res.status(422).json({ error: "minimum 1 rupees" });
-  } else if (req.user.tPin !== tPin) {
+  } else if (!req.user.tPin == tPin) {
+    console.log("transection pim not correct");
     return res.status(422).json({ error: "transection pim not correct" });
   } else {
-    User.findOne({ _id: req.params._id })
+    User.findOne({ phoneNum: req.params._id })
       .then((userAvailable) => {
         User.findOneAndUpdate(
           { _id: req.user._id },
-          { $set: { availableAmound: availableAmound - amount } },
+          { $set: { availableAmound: req.user.availableAmound - amount } },
           { new: true }
-        );
+        ).then((res) => {
+          console.log("-amount");
+        });
         const transection = new Transection({
           sender: req.user.phoneNum,
-          recever: req.params.phoneNum,
+          recever: req.params._id,
           amount,
         });
         transection.save().then((transection) => {
+          console.log("-transection");
           try {
             User.updateMany(
-              { _id: { $in: [req.user._id, req.params._id] } },
-              { $push: { transaction: transection._id } },
+              { _id: { $in: [req.user._id, userAvailable._id] } },
+              { $push: { transection: transection._id } },
               { new: true }
-            );
+            )
+              .then((re) => {
+                console.log(re);
+              })
+              .catch((err) => {
+                console.error(err);
+              });
             User.findOneAndUpdate(
-              { _id: req.params._id },
-              { $set: { availableAmound: availableAmound + amount } },
+              { phoneNum: req.params._id },
+              {
+                $set: {
+                  availableAmound: userAvailable.availableAmound + amount,
+                },
+              },
               { new: true }
             )
               .then((result) => {
@@ -207,7 +227,7 @@ router.post("/user/:_id", requireLogin, (req, res) => {
               })
               .catch((err) => {
                 console.error(err);
-                res.status(500).send("server error");
+                // res.status(500).send("server error");
               });
           } catch (err) {
             console.error(err.message);
@@ -219,6 +239,25 @@ router.post("/user/:_id", requireLogin, (req, res) => {
         return res.status(456).json({ error: "user not found" });
       });
   }
+});
+
+router.get("/user/:_id/transections", requireLogin, (req, res) => {
+  User.findOne({ _id: req.user._id })
+    .then((user) => {
+      if (
+        user.transection.sender !== req.params._id ||
+        user.transection.recever !== req.params._id
+      ) {
+        return res
+          .status(422)
+          .json({ massege: "no transition commited. trying to send money" });
+      } else {
+        return res.json({ transections: user.transection });
+      }
+    })
+    .catch((err) => {
+      return res.status(456).json({ error: "user not found" });
+    });
 });
 
 module.exports = router;
