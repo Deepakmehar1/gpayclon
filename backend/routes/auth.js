@@ -57,7 +57,6 @@ router.post("/signin", (req, res) => {
               name,
               phoneNum,
               transections,
-              availableAmount,
               firstLogin,
             } = savedUser;
             res.json({
@@ -67,7 +66,6 @@ router.post("/signin", (req, res) => {
                 name,
                 phoneNum,
                 transections,
-                availableAmount,
                 firstLogin,
               },
             });
