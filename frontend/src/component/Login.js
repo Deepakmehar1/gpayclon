@@ -1,7 +1,7 @@
-import React, {useContext ,useState} from "react";
+import React, { useContext, useState } from "react";
 import "../componentCss/login.css";
 import { Link, useNavigate } from "react-router-dom";
-import {UserContext} from "../App";
+import { UserContext } from "../App";
 
 function Login() {
   const { state, dispatch } = useContext(UserContext);
@@ -28,7 +28,7 @@ function Login() {
           localStorage.setItem("jwt", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
           dispatch({ type: "USER", payload: data.user });
-          navicate(data.user.firstLogin?"/firstLogin":"/");
+          navicate(data.user.firstLogin ? "/firstLogin" : "/");
         }
       })
       .catch((err) => {
@@ -39,7 +39,12 @@ function Login() {
     <div className="login">
       <div className="left-content">
         <div className="bg" />
-        <img className="left-content-child" alt="" src="/group-2.svg" />
+        <div className="left-content-child"></div>
+        <div
+          className="left-content-child"
+          style={{ top: "576px", left: "17px" }}
+        ></div>
+        {/* <img className="left-content-child" alt="" src="/group-2.svg" /> */}
         <div className="content">
           <div className="group-parent">
             <div className="nocash-parent">
@@ -60,6 +65,9 @@ function Login() {
           <div className="welcome-back-boss">Welcome Back Boss</div>
           <Link to={"/"} className="nocash forgot-password">
             Forgot Password
+          </Link>
+          <Link to={"/register"} className="nocash new-user">
+            dont have an account? register
           </Link>
         </div>
         <div className="button">

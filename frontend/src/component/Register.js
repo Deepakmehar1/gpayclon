@@ -7,7 +7,12 @@ function Register() {
     <div className="register">
       <div className="left-content">
         <div className="bg" />
-        <img className="left-content-child" alt="" src="/group-2.svg" />
+        <div className="left-content-child"></div>
+        <div
+          className="left-content-child"
+          style={{ top: "576px", left: "17px" }}
+        ></div>
+        {/* <img className="left-content-child" alt="" src="/group-2.svg" /> */}
         <div className="content">
           <div className="group-parent">
             <div className="nocash-parent">
@@ -26,12 +31,19 @@ function Register() {
         <div className="title">
           <b className="hello-boss">Hello! Boss</b>
           <div className="sign-up-to">Sign Up to Get Started</div>
+          <Link to={"/login"} className="nocash old-user">
+            Already have an account? login
+          </Link>
         </div>
         <div className="email-parent">
           <div className="email">
             <div className="placeholder">
               <div className="full-name">
-                <input type="text" className="r-input"  placeholder="Full Name" />
+                <input
+                  type="text"
+                  className="r-input"
+                  placeholder="Full Name"
+                />
               </div>
               <img className="bxbxs-user-icon" alt="" src="/bxbxsuser.svg" />
             </div>
@@ -39,7 +51,11 @@ function Register() {
           <div className="email">
             <div className="placeholder1">
               <div className="full-name">
-                <input type="text" className="r-input" placeholder="mobile number" />
+                <input
+                  type="text"
+                  className="r-input"
+                  placeholder="mobile number"
+                />
               </div>
               <img className="codiconmail" alt="" src="/codiconmail.svg" />
             </div>
