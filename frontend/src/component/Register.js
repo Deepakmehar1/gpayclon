@@ -1,8 +1,38 @@
-import React from "react";
-import "../componentCss/register.css"
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../componentCss/register.css";
 
 function Register() {
+  const navicate = useNavigate();
+  const [name, setName] = useState("");
+  const [phoneNum, setPhoneNum] = useState("");
+  const [password, setPassword] = useState("");
+
+  const PostData = () => {
+    fetch("http://localhost:5000/register", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        phoneNum,
+        password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          console.log(data);
+        } else {
+          console.log(data);
+          navicate("/login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="register">
       <div className="left-content">
@@ -43,6 +73,7 @@ function Register() {
                   type="text"
                   className="r-input"
                   placeholder="Full Name"
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <img className="bxbxs-user-icon" alt="" src="/bxbxsuser.svg" />
@@ -55,6 +86,7 @@ function Register() {
                   type="text"
                   className="r-input"
                   placeholder="mobile number"
+                  onChange={(e) => setPhoneNum(e.target.value)}
                 />
               </div>
               <img className="codiconmail" alt="" src="/codiconmail.svg" />
@@ -63,12 +95,17 @@ function Register() {
           <div className="email">
             <div className="placeholder2">
               <div className="password1">
-                <input type="text" className="r-input" placeholder="password" />
+                <input
+                  type="text"
+                  className="r-input"
+                  placeholder="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
               <img className="codiconmail" alt="" src="/bxbxslockalt.svg" />
             </div>
           </div>
-          <div className="button">
+          <div className="button" onClick={() => PostData()}>
             <div className="placeholder3">
               <div className="nocash">Register</div>
             </div>

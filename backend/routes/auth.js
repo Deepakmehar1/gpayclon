@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
-router.post("/signup", (req, res) => {
+router.post("/register", (req, res) => {
   const { name, phoneNum, password, tPin } = req.body;
   if (!phoneNum || !password || !name || !tPin) {
     return res.status(422).json({ error: "please add all the fields" });
@@ -37,7 +37,7 @@ router.post("/signup", (req, res) => {
   }
 });
 
-router.post("/signin", (req, res) => {
+router.post("/login", (req, res) => {
   const { phoneNum, password } = req.body;
   if (!phoneNum || !password) {
     res.status(422).json({ error: "please provide phoneNum or password" });

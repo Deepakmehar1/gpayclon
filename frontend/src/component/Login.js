@@ -4,13 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../App";
 
 function Login() {
-  const { state, dispatch } = useContext(UserContext);
   const navicate = useNavigate();
+  const { state, dispatch } = useContext(UserContext);
   const [phoneNum, setPhoneNum] = useState("");
   const [password, setPassword] = useState("");
 
   const PostData = () => {
-    fetch("http://localhost:5000/signin", {
+    fetch("http://localhost:5000/login", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

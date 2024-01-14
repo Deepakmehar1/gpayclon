@@ -9,7 +9,11 @@ import {
 import Register from "./component/Register";
 import Login from "./component/Login";
 import Navbar from "./component/Navbar";
-// import Home from "./component/screen/Home";
+import Home from "./component/Home";
+import AddMoney from "./component/AddMoney";
+import SearchUser from "./component/SearchUser";
+import Sendmoney from "./component/Sendmoney";
+import Transections from "./component/Transections";
 import { reducer, initialState } from "./reducers/userReducers";
 
 export const UserContext = createContext();
@@ -37,10 +41,13 @@ const Routing = () => {
   );
   return (
     <Routes>
-      {/* <Route path="/" element={<Home />} /> */}
+      {<Route path="/" element={<Home />} />}
       <Route path="/Register" element={<Register />} />
-
       <Route path="/Login" element={<Login />} />
+      <Route path="/AddMoney" element={<AddMoney />} />
+      <Route path="/SearchUser" element={<SearchUser />} />
+      <Route path="/Sendmoney" element={<Sendmoney />} />
+      <Route path="/Transections" element={<Transections />} />
     </Routes>
   );
 };
