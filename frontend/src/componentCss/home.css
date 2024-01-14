@@ -1,0 +1,84 @@
+#home .home-child {
+  position: absolute;
+  top: 200px;
+  left: 576px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #1b1b1b, #090909 84.5%, #000);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: 2px solid rgba(36, 255, 0, 0.85);
+  box-sizing: border-box;
+  width: 288px;
+  height: 284px;
+}
+#home .khan-sir-image-4-1-icon {
+  position: absolute;
+  top: calc(50% - 310px);
+  left: calc(50% - 142px);
+  border-radius: 140px;
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+}
+#home .ellipse-div,
+#home .home-child1,
+#home .home-inner,
+#home .home-item {
+  position: absolute;
+  top: 638px;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+#home .home-item {
+  left: 91px;
+  background-color: #1b1b1b;
+}
+#home .ellipse-div,
+#home .home-child1,
+#home .home-inner {
+  left: 455px;
+  background: linear-gradient(180deg, #1b1b1b, #090909 84.5%, #000);
+}
+#home .ellipse-div,
+#home .home-child1 {
+  left: 819px;
+}
+#home .home-child1 {
+  left: 1183px;
+}
+#home .first-last {
+  position: absolute;
+  top: 504px;
+  left: 609px;
+  font-size: 57.65px;
+}
+#home .available-balence {
+  position: absolute;
+  top: 850px;
+  left: 93px;
+}
+#home .add-money,
+#home .send-money,
+#home .transections {
+  position: absolute;
+  top: 850px;
+  left: 491px;
+}
+#home .send-money,
+#home .transections {
+  left: 850px;
+}
+#home .transections {
+  left: 1213px;
+}
+#home {
+  position: relative;
+  background-color: #fffff3;
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 24px;
+  color: #000;
+  font-family: Inter;
+}

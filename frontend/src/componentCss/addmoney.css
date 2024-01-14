@@ -1,0 +1,67 @@
+#addmoney .addmoney-child {
+  position: absolute;
+  top: 396px;
+  left: 401px;
+  background-color: #1b1b1b;
+  width: 572px;
+  height: 180px;
+}
+#addmoney .addmoney-inner,
+#addmoney .addmoney-item,
+#addmoney .ellipse-div {
+  position: absolute;
+  top: 710px;
+  left: 308px;
+  border-radius: 96px;
+  background-color: #1b1b1b;
+  width: 624px;
+  height: 110px;
+}
+#addmoney .addmoney-inner,
+#addmoney .ellipse-div {
+  top: 714px;
+  left: 958px;
+  border-radius: 50%;
+  width: 107px;
+  height: 102px;
+}
+#addmoney .ellipse-div {
+  top: 64px;
+  left: 106px;
+}
+#addmoney .add-money {
+  position: absolute;
+  top: 80px;
+  left: 249px;
+}
+#addmoney .n {
+  letter-spacing: 0.33em;
+}
+#addmoney .div,
+#addmoney .tpin {
+  position: absolute;
+  top: 730px;
+  left: 567px;
+  color: #f2f2f2;
+  opacity: 0.44;
+}
+#addmoney .div {
+  top: 442px;
+  left: 632px;
+  font-size: 85.25px;
+  color: #fffbd7;
+  display: inline-block;
+  width: 109px;
+  height: 89px;
+}
+#addmoney {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 57.65px;
+  color: #000;
+  font-family: Inter;
+}

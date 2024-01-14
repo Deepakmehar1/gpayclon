@@ -1,0 +1,31 @@
+#transections .transections-child {
+  position: absolute;
+  top: calc(50% - 371px);
+  left: calc(50% - 572px);
+  border-radius: 53px;
+  background-color: #1b1b1b;
+  width: 1144px;
+  height: 883px;
+}
+#transections .add-money,
+#transections .transections1 {
+  position: absolute;
+  top: 37px;
+  left: 551px;
+}
+#transections .add-money {
+  top: 478px;
+  left: -4593px;
+  text-align: left;
+}
+#transections {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 57.65px;
+  color: #000;
+  font-family: Inter;
+}
