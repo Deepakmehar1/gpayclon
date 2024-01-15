@@ -20,18 +20,33 @@ router.get("/mytransection", requireLogin, (req, res) => {
       console.log(err);
     });
 });
+router.get("/balence", requireLogin, (req, res) => {
+  User.findOne({ phoneNum: req.user.phoneNum })
+    .select("availableAmound")
+    .then((user) => {
+      return res.json({ availableAmound: user.availableAmound });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 router.post("/addmoney", requireLogin, (req, res) => {
+  const amount = parseInt(req.body.amount);
   User.findOneAndUpdate(
     { phoneNum: req.user.phoneNum },
-    { $set: { availableAmound: req.user.availableAmound + req.body.amount } },
+    {
+      $set: {
+        availableAmound: req.user.availableAmound + amount,
+      },
+    },
     { new: true }
   )
     .select("-password -tPin")
     // .populate("transection", "_id sender recever amount date")
     .then((addmoney) => {
-      console.log(addmoney);
+      // console.log(addmoney);
       res.json({
-        massege:
+        message:
           "add money(" +
           req.body.amount +
           ") in your wallet current balenced is" +
