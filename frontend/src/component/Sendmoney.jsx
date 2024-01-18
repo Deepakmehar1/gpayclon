@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "../componentCss/sendmoney.css";
+import { UserContext } from "../App";
 
 function Sendmoney() {
   const { userphoneNum } = useParams();
   const [amount, setAmount] = useState("");
+  const { state, dispatch } = useContext(UserContext);
   const [tpin, setTpin] = useState("");
   const [success, setTsuccess] = useState("");
   const [transection, setTransection] = useState("");
@@ -47,7 +49,7 @@ function Sendmoney() {
       <input
         className="send-money-item"
         type="text"
-        placeholder="77"
+        placeholder="amount"
         onChange={(e) => setAmount(e.target.value)}
       />
       <div className="send-money-inner" onClick={() => PostData()} />
@@ -57,13 +59,23 @@ function Sendmoney() {
         placeholder="tPin"
         onChange={(e) => setTpin(e.target.value)}
       />
-      <div className="div1">0000000000</div>
+      <div className="div1">{userphoneNum}</div>
       <ul className="rectangle-div" key={"transection_container"}>
         {transection
           ? transection.map((item) => {
               return (
                 <>
-                  <li key={item._id}>{item._id}</li>
+                  <li
+                    key={item._id}
+                    className={
+                      item.sender == state.phoneNum ? "sender" : "recever"
+                    }
+                  >
+                    <h6>transection no.-{item._id}</h6>
+                    <h4>recever- {item.recever}</h4>
+                    <h4>sender- {item.sender}</h4>
+                    <h3>amount- {item.amount}</h3>
+                  </li>
                 </>
               );
             })

@@ -56,6 +56,7 @@
   position: absolute;
   top: 86px;
   left: 146px;
+  overflow-y: auto;
   border-radius: 53px;
   background-color: #1b1b1b;
   width: 1176px;
@@ -67,6 +68,28 @@
   border-radius: 50%;
   width: 70px;
   height: 70px;
+}
+#send-money .recever {
+  transform: translateX(0);
+}
+#send-money ul li {
+  list-style: none;
+  font-size: 24px;
+  padding: 8px;
+  margin: 16px 0;
+  text-align: left;
+  background: #6c6c6c3d;
+  width: 500px;
+  border-radius: 16px;
+  transform: translateX(40rem);
+}
+#send-money h6 {
+  opacity: 0.6;
+}
+#send-money h6,
+#send-money h3,
+#send-money h4 {
+  margin: 8px 0;
 }
 #send-money {
   position: relative;
