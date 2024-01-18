@@ -58,8 +58,8 @@ router.post("/addmoney", requireLogin, (req, res) => {
       console.log(err);
     });
 });
-router.get("/search-user", requireLogin, (req, res) => {
-  let userPattern = String(req.body.phoneNum);
+router.post("/search-user", requireLogin, (req, res) => {
+  let userPattern = parseInt(req.body.phoneNum);
   User.find({ phoneNum: userPattern })
     .select("_id name phoneNum")
     .then((user) => {
@@ -70,33 +70,46 @@ router.get("/search-user", requireLogin, (req, res) => {
       console.log(err);
     });
 });
-router.post("/user/:_id/transfer", requireLogin, (req, res) => {
-  const { amount, tPin } = req.body;
-  if (amount == 0 || req.user.availableAmound < amount) {
-    console.log("minimum 1 rupees or ensufiicient balenced");
-    return res.status(422).json({ error: "minimum 1 rupees" });
-  } else if (!req.user.tPin == tPin) {
-    console.log("transection pim not correct");
-    return res.status(422).json({ error: "transection pim not correct" });
-  } else {
+router.post("/user/:_id/transfer", requireLogin, async (req, res) => {
+  let { amount, tPin } = req.body;
+  amount = parseInt(amount);
+  tPin = parseInt(tPin);
+  let cheking = true;
+  let newAmountSender = 0;
+  let newAmountRicever = 0;
+  await User.findOne({ _id: req.user._id }).then((check) => {
+    if (amount == 0 || check.availableAmound < amount) {
+      console.log("minimum 1 rupees or ensufiicient balenced");
+      cheking = false;
+      return res.status(422).json({ error: "minimum 1 rupees" });
+    } else if (check.tPin !== tPin) {
+      console.log("transection pin not correct");
+      cheking = false;
+      return res.status(422).json({ error: "transection pin not correct" });
+    }
+    newAmountSender = check.availableAmound - amount;
+  });
+  if (cheking) {
+    console.log(cheking, newAmountSender, req.params._id);
     User.findOne({ phoneNum: req.params._id })
-      .then((userAvailable) => {
-        User.findOneAndUpdate(
+      .then(async (userAvailable) => {
+        newAmountRicever = userAvailable.availableAmound + amount;
+        await User.findOneAndUpdate(
           { _id: req.user._id },
-          { $set: { availableAmound: req.user.availableAmound - amount } },
+          { $set: { availableAmound: newAmountSender } },
           { new: true }
         ).then((res) => {
-          console.log("-amount");
+          console.log(newAmountSender, "-amount", newAmountRicever);
         });
         const transection = new Transection({
           sender: req.user.phoneNum,
           recever: req.params._id,
           amount,
         });
-        transection.save().then((transection) => {
+        transection.save().then(async (transection) => {
           console.log("-transection");
           try {
-            User.updateMany(
+            await User.updateMany(
               { _id: { $in: [req.user._id, userAvailable._id] } },
               { $push: { transection: transection._id } },
               { new: true }
@@ -107,15 +120,16 @@ router.post("/user/:_id/transfer", requireLogin, (req, res) => {
               .catch((err) => {
                 console.error(err);
               });
-            User.findOneAndUpdate(
+            await User.findOneAndUpdate(
               { phoneNum: req.params._id },
               {
                 $set: {
-                  availableAmound: userAvailable.availableAmound + amount,
+                  availableAmound: newAmountRicever,
                 },
               },
               { new: true }
             )
+              .select("-password -tPin")
               .then((result) => {
                 console.log(result);
                 return res.status(200).json({ transection, result });

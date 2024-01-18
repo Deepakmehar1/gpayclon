@@ -8,10 +8,16 @@
   width: 624px;
   height: 110px;
 }
+#searchuser .phone_number {
+  font-size: 57.65px;
+  color: #f2f2f2;
+  text-align: center;
+}
 #searchuser .searchuser-item {
   left: 991px;
   border-radius: 50%;
   width: 107px;
+  cursor: pointer;
   height: 102px;
 }
 #searchuser .search-user {
@@ -19,6 +25,10 @@
   top: 370px;
   left: 494px;
   opacity: 0.44;
+}
+#searchuser .searchuser-inner p {
+  margin: 0;
+  font-size: 36px;
 }
 #searchuser .searchuser-inner {
   position: absolute;
@@ -28,6 +38,7 @@
   background-color: #1b1b1b;
   width: 757px;
   height: 384px;
+  padding: 16px;
 }
 #searchuser .send-money {
   position: absolute;
@@ -35,14 +46,15 @@
   left: 570px;
   color: #000;
 }
-#searchuser  {
+#searchuser {
   position: relative;
   background-color: #fff;
   width: 100%;
-  height: 1024px;
-  overflow: hidden;
+  height: 100vh;
   text-align: left;
   font-size: 57.65px;
   color: #f1f1f1;
   font-family: Inter;
+  transform: scale(0.7);
+  margin: -67px -67px -67px -19px;
 }

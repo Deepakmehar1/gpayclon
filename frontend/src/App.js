@@ -46,7 +46,7 @@ const Routing = () => {
       <Route path="/Login" element={<Login />} />
       <Route path="/AddMoney" element={<AddMoney />} />
       <Route path="/SearchUser" element={<SearchUser />} />
-      <Route path="/Sendmoney" element={<Sendmoney />} />
+      <Route path="/user/:userphoneNum/transfer" element={<Sendmoney />} />
       <Route path="/Transections" element={<Transections />} />
     </Routes>
   );
