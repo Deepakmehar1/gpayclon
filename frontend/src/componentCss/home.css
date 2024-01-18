@@ -37,6 +37,7 @@
 }
 #home .home-item {
   left: 91px;
+  cursor: pointer;
   /* background-color: #1b1b1b; */
 }
 
@@ -65,11 +66,11 @@
   position: relative;
   background-color: #fffff3;
   width: 100%;
-  height: 100vh;
   text-align: left;
   font-size: 24px;
   color: #000;
+  left: 40%;
   font-family: Inter;
-  transform: scale(0.7);
+  transform: scale(0.7) translate(-50%);
   margin: -67px;
 }

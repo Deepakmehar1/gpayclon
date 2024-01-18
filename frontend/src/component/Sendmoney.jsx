@@ -4,9 +4,9 @@ import "../componentCss/sendmoney.css";
 import { UserContext } from "../App";
 
 function Sendmoney() {
+  const { state, dispatch } = useContext(UserContext);
   const { userphoneNum } = useParams();
   const [amount, setAmount] = useState("");
-  const { state, dispatch } = useContext(UserContext);
   const [tpin, setTpin] = useState("");
   const [success, setTsuccess] = useState("");
   const [transection, setTransection] = useState("");
