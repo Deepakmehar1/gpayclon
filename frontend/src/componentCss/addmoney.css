@@ -22,8 +22,8 @@
 }
 #addmoney .addmoney-inner,
 #addmoney .ellipse-div {
-  top: 714px;
-  left: 958px;
+  top: 640px;
+  left: 640px;
   border-radius: 50%;
   width: 107px;
   height: 102px;
@@ -66,5 +66,5 @@
   color: #000;
   font-family: Inter;
   transform: scale(0.7);
-  margin: -67px;
+  margin: 0px;
 }

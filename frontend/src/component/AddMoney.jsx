@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 function Addmoney() {
   const navicate = useNavigate();
   const [amount, setAmount] = useState("");
-  const [tpin, setTpin] = useState("");
   const PostData = () => {
     if (amount == "") {
       console.log("minimum amound is 1");
@@ -37,15 +36,7 @@ function Addmoney() {
       <div className="addmoney-inner" onClick={() => PostData()} />
       <div className="ellipse-div" />
       <div className="add-money">add money</div>
-      <div className="add-money">add money</div>
-      <input
-        type="text"
-        name="tpin"
-        id="tpin"
-        placeholder="tpin"
-        className="tpin addmoney-item"
-        onChange={(e) => setTpin(e.target.value)}
-      />
+
       <input
         type="text"
         name="tpin"

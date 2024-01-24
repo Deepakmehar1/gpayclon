@@ -90,7 +90,7 @@ router.post("/user/:_id/transfer", requireLogin, async (req, res) => {
     newAmountSender = check.availableAmound - amount;
   });
   if (cheking) {
-    console.log(cheking, newAmountSender, req.params._id);
+    // console.log(cheking, newAmountSender, req.params._id);
     User.findOne({ phoneNum: req.params._id })
       .then(async (userAvailable) => {
         newAmountRicever = userAvailable.availableAmound + amount;
@@ -98,16 +98,16 @@ router.post("/user/:_id/transfer", requireLogin, async (req, res) => {
           { _id: req.user._id },
           { $set: { availableAmound: newAmountSender } },
           { new: true }
-        ).then((res) => {
+        ); /* .then((res) => {
           console.log(newAmountSender, "-amount", newAmountRicever);
-        });
+        }); */
         const transection = new Transection({
           sender: req.user.phoneNum,
           recever: req.params._id,
           amount,
         });
         transection.save().then(async (transection) => {
-          console.log("-transection");
+          // console.log("-transection");
           try {
             await User.updateMany(
               { _id: { $in: [req.user._id, userAvailable._id] } },
@@ -169,11 +169,13 @@ router.get("/user/:_id/transections", requireLogin, (req, res) => {
       return res.status(456).json({ error: "user not found" });
     });
 });
-router.get("/cashback", requireLogin, (req, res) => {
+router.post("/cashback", requireLogin, (req, res) => {
+  const { amount } = req.body;
+  const transectionAmount = parseInt(amount);
   try {
-    const transectionAmount = req.body.amount;
     if (transectionAmount % 500 == 0) {
       const hasCoupon = Math.random() < 0.5;
+      console.log(hasCoupon);
       if (hasCoupon) {
         return res.json({
           cashback: 0,

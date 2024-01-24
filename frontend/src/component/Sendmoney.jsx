@@ -23,6 +23,40 @@ function Sendmoney() {
         setTransection(result.transections);
       });
   }, [success]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/cashback`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({ amount }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log("cashbacck", result);
+        if (result.cashback !== 0) {
+          fetch("http://localhost:5000/addmoney", {
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("jwt"),
+            },
+            body: JSON.stringify({
+              amount: result.cashback,
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data.message);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+      });
+  }, [success]);
+
   const PostData = () => {
     // console.log(amount,tpin,userphoneNum);
     fetch(`http://localhost:5000/user/${userphoneNum}/transfer`, {
