@@ -1,0 +1,100 @@
+#FirstLogin .div {
+  top: 598px;
+  left: 345px;
+  font-size: 85.25px;
+  background-color: #1b1b1b;
+  display: inline-block;
+  width: 384px;
+  border-radius: 10px;
+  text-align: center;
+  height: 100px;
+}
+#FirstLogin .container {
+  position: relative;
+  border: 2px solid black;
+  height: 337px;
+  width: 800px;
+  transform: translate(43px, 28px);
+}
+#FirstLogin .container2 {
+  border: 2px solid;
+  position: relative;
+  width: 800px;
+  height: 257px;
+  top: 157px;
+  left: 3%;
+}
+#FirstLogin .uploadPic {
+  position: absolute;
+  top: -44px;
+  left: 35px;
+}
+#FirstLogin .add-money {
+  position: absolute;
+  top: 426px;
+  left: 43px;
+}
+input#uploadimg {
+  position: absolute;
+  top: 170px;
+  left: 477px;
+  transform: scale(1.5);
+  filter: drop-shadow(3px 5px 35px black);
+}
+#FirstLogin .ellipse-div {
+  position: absolute;
+  top: 51px;
+  left: 113px;
+  border-radius: 50%;
+  background-color: #1b1b1b;
+  width: 240px;
+  height: 240px;
+}
+#FirstLogin .addmoney-child {
+  position: absolute;
+  top: 82px;
+  left: 401px;
+  background-color: #1b1b1b;
+  width: 506px;
+  height: 104px;
+}
+#FirstLogin .addmoney-inner {
+  cursor: pointer;
+  position: absolute;
+  background-color: #1b1b1b;
+}
+#FirstLogin .addmoney-inner {
+  top: -119px;
+  left: 1050px;
+  border-radius: 50%;
+  width: 107px;
+  height: 102px;
+}
+#FirstLogin img.preview {
+  height: 236px;
+  width: 236px;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+#FirstLogin .div {
+  position: absolute;
+  top: 82px;
+  left: 173px;
+  font-size: 57.65px;
+  color: #f2f2f2;
+  text-align: center;
+}
+
+#FirstLogin {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  text-align: left;
+  font-size: 57.65px;
+  color: #000;
+  font-family: Inter;
+  transform: scale(0.7);
+  margin: 0px;
+}
