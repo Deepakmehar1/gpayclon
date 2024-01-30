@@ -31,8 +31,8 @@ function Home() {
       <div className="home-child">
         <img
           className="khan-sir-image-4-1-icon"
-          alt=""
-          src="/khansirimage4-1@2x.png"
+          alt="profile pic"
+          src={state?state.pic:""}
         />
 
         {state ? <div className="first-last">{state.name}</div> : "loding.."}

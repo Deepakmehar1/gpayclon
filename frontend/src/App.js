@@ -8,10 +8,12 @@ import {
 } from "react-router-dom";
 import Register from "./component/Register";
 import Login from "./component/Login";
+import Send from "./component/Send";
 import Navbar from "./component/Navbar";
 import Home from "./component/Home";
 import AddMoney from "./component/AddMoney";
 import SearchUser from "./component/SearchUser";
+import FirstLogin from "./component/FirstLogin";
 import Sendmoney from "./component/Sendmoney";
 import Transections from "./component/Transections";
 import { reducer, initialState } from "./reducers/userReducers";
@@ -27,6 +29,9 @@ const Routing = () => {
       const user = JSON.parse(localStorage.getItem("user"));
       if (user) {
         dispatch({ type: "USER", payload: user });
+        if (user.FirstLogin) {
+          history("/firstlogin");
+        }
       } else {
         if (!location.pathname.startsWith("/register")) {
           history("/login");
@@ -46,8 +51,17 @@ const Routing = () => {
       <Route path="/Login" element={<Login />} />
       <Route path="/AddMoney" element={<AddMoney />} />
       <Route path="/SearchUser" element={<SearchUser />} />
+      <Route
+        path="/FirstLogin"
+        element={state && !state.firstLogin ? <Send /> : <FirstLogin />}
+      />
       <Route path="/user/:userphoneNum/transfer" element={<Sendmoney />} />
       <Route path="/Transections" element={<Transections />} />
+      {/* {state && state.firstLogin ? (
+        <Route path="/FirstLogin" element={<FirstLogin />} />
+      ) : (
+        ""
+      )} */}
     </Routes>
   );
 };

@@ -52,7 +52,8 @@ router.post("/login", (req, res) => {
           if (doMatch) {
             // res.json({message:"successfully signin"})
             const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET);
-            const { _id, name, phoneNum, transections, firstLogin } = savedUser;
+            const { _id, name, phoneNum, transections, firstLogin, pic } =
+              savedUser;
             res.json({
               token,
               user: {
@@ -61,6 +62,7 @@ router.post("/login", (req, res) => {
                 phoneNum,
                 transections,
                 firstLogin,
+                pic,
               },
             });
           } else {

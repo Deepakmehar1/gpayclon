@@ -4,6 +4,19 @@ const mongoose = require("mongoose");
 const requireLogin = require("../middlewear/requireLogin");
 const Transection = mongoose.model("Transection");
 const User = mongoose.model("User");
+const cloudinary = require("../cloudinary.js");
+const fileUpload = require("express-fileupload");
+
+router.use(express.json({ limit: "50mb" }));
+router.use(express.urlencoded({ extended: true, limit: "50mb" }));
+router.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp", // Specify the directory where temporary files are stored
+    createParentPath: true, // Ensure the directory structure exists
+    cleanup: true,
+  })
+);
 
 router.get("/mytransection", requireLogin, (req, res) => {
   User.findOne({ phoneNum: req.user.phoneNum })
@@ -61,7 +74,7 @@ router.post("/addmoney", requireLogin, (req, res) => {
 router.post("/search-user", requireLogin, (req, res) => {
   let userPattern = parseInt(req.body.phoneNum);
   User.find({ phoneNum: userPattern })
-    .select("_id name phoneNum")
+    .select("_id name phoneNum pic")
     .then((user) => {
       console.log({ user });
       res.json({ user: user });
@@ -153,7 +166,17 @@ router.get("/user/:_id/transections", requireLogin, (req, res) => {
   User.findOne({ _id: req.user._id })
     .select("-_id -phoneNum -availableAmound -password -tPin")
     .populate("transection", "_id sender recever amount date")
-    .then((user) => {
+    .then(async (user) => {
+      const frdPic = await User.findOne({ phoneNum: parseInt(req.params._id) })
+        .select("pic")
+
+        .then((frd) => {
+          return frd.pic;
+        })
+        .catch((err) => {
+          console.log(err);
+          return;
+        });
       if (
         !user.transection.sender == req.params._id ||
         !user.transection.recever == req.params._id
@@ -162,7 +185,7 @@ router.get("/user/:_id/transections", requireLogin, (req, res) => {
           .status(422)
           .json({ massege: "no transition commited. trying to send money" });
       } else {
-        return res.json({ transections: user.transection });
+        return res.json({ transections: user.transection , pic: frdPic });
       }
     })
     .catch((err) => {
@@ -207,5 +230,38 @@ router.post("/cashback", requireLogin, (req, res) => {
     console.error(error);
     return res.status(500).json({ error: "internal server error" });
   }
+});
+router.post("/picfile", requireLogin, async (req, res) => {
+  const { image } = req.files;
+  req.user.password = undefined;
+  await cloudinary.uploader.upload(
+    image.tempFilePath,
+    { format: "webp" },
+    (err, result) => {
+      if (result) {
+        const photo = result.url;
+        // const cii = result.public_id;
+
+        User.findByIdAndUpdate(
+          req.user._id,
+          { $set: { pic: photo, firstLogin: false } },
+          { new: true }
+        )
+          .select(
+            "-_id -phoneNum -availableAmound -password -tPin -transection"
+          )
+          .then((result) => {
+            console.log(result, "success");
+            res.json(result);
+          })
+          .catch((err) => {
+            console.log("error:", err);
+            return res.status(422).json({ error: err });
+          });
+      } else {
+        console.log("error:", err);
+      }
+    }
+  );
 });
 module.exports = router;

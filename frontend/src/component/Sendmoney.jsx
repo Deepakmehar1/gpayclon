@@ -9,6 +9,7 @@ function Sendmoney() {
   const [amount, setAmount] = useState("");
   const [tpin, setTpin] = useState("");
   const [success, setTsuccess] = useState("");
+  const [pic, setPic] = useState("");
   const [transection, setTransection] = useState("");
   useEffect(() => {
     fetch(`http://localhost:5000/user/${userphoneNum}/transections`, {
@@ -19,42 +20,45 @@ function Sendmoney() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("transectionssss", result);
+        // console.log("transectionssss", result);
         setTransection(result.transections);
+        setPic(result.pic);
       });
   }, [success]);
   useEffect(() => {
-    fetch(`http://localhost:5000/cashback`, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-      body: JSON.stringify({ amount }),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log("cashbacck", result);
-        if (result.cashback !== 0) {
-          fetch("http://localhost:5000/addmoney", {
-            method: "post",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("jwt"),
-            },
-            body: JSON.stringify({
-              amount: result.cashback,
-            }),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data.message);
+    if (success !== "") {
+      fetch(`http://localhost:5000/cashback`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+        body: JSON.stringify({ amount }),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log("cashbacck", result);
+          if (result.cashback !== 0) {
+            fetch("http://localhost:5000/addmoney", {
+              method: "post",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + localStorage.getItem("jwt"),
+              },
+              body: JSON.stringify({
+                amount: result.cashback,
+              }),
             })
-            .catch((err) => {
-              console.log(err);
-            });
-        }
-      });
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data.message);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
+        });
+    }
   }, [success]);
 
   const PostData = () => {
@@ -86,7 +90,7 @@ function Sendmoney() {
         placeholder="amount"
         onChange={(e) => setAmount(e.target.value)}
       />
-      <div className="send-money-inner" onClick={() => PostData()} />
+      <div className="send-money-inner" onClick={() => PostData} />
       <input
         className="send-money-child"
         type="text"
@@ -115,7 +119,7 @@ function Sendmoney() {
             })
           : "no history"}
       </ul>
-      <div className="ellipse-div" />
+      <img src={pic} className="ellipse-div" />
     </div>
   );
 }
