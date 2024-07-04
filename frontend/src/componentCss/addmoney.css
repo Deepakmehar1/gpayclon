@@ -1,0 +1,70 @@
+#addmoney .addmoney-child {
+  position: absolute;
+  top: 396px;
+  left: 401px;
+  background-color: #1b1b1b;
+  width: 572px;
+  height: 180px;
+}
+#addmoney .addmoney-inner {
+  cursor: pointer;
+}
+#addmoney .addmoney-inner,
+#addmoney .addmoney-item,
+#addmoney .ellipse-div {
+  position: absolute;
+  top: 710px;
+  left: 308px;
+  border-radius: 96px;
+  background-color: #1b1b1b;
+  width: 624px;
+  height: 110px;
+}
+#addmoney .addmoney-inner,
+#addmoney .ellipse-div {
+  top: 640px;
+  left: 640px;
+  border-radius: 50%;
+  width: 107px;
+  height: 102px;
+}
+#addmoney .ellipse-div {
+  top: 64px;
+  left: 106px;
+}
+#addmoney .add-money {
+  position: absolute;
+  top: 80px;
+  left: 249px;
+}
+
+#addmoney .div,
+#addmoney .tpin {
+  position: absolute;
+  top: 708px;
+  left: 302px;
+  font-size: 57.65px;
+  color: #f2f2f2;
+  text-align: center;
+}
+#addmoney .div {
+  top: 396px;
+  left: 399px;
+  font-size: 85.25px;
+  background-color: #1b1b1b;
+  display: inline-block;
+  width: 568px;
+  text-align: center;
+  height: 176px;
+}
+#addmoney {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  text-align: left;
+  font-size: 57.65px;
+  color: #000;
+  font-family: Inter;
+  transform: scale(0.7);
+  margin: 0px;
+}

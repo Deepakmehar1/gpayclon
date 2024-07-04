@@ -27,6 +27,11 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  pic: {
+    type: String,
+    default:
+      "https://res.cloudinary.com/dxndplrix/image/upload/v1701952263/app/bxiwentwarvwwypky1ha.jpg",
+  },
 });
 
 mongoose.model("User", userSchema);

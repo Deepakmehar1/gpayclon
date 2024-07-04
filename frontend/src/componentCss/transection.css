@@ -1,0 +1,54 @@
+#transections .transections-child {
+  position: absolute;
+  top: calc(50% - 371px);
+  left: calc(50% - 572px);
+  border-radius: 24px;
+  background-color: #1b1b1b;
+  width: 1144px;
+  height: auto;
+  overflow-y: auto;    margin: 0;
+}
+#transections .add-money,
+#transections .transections1 {
+  position: absolute;
+  top: 37px;
+  left: 551px;
+}
+#transections .add-money {
+  top: 478px;
+  left: -4593px;
+  text-align: left;
+}
+#transections .recever {
+  transform: translateX(0);
+}
+#transections ul li {
+  list-style: none;
+  font-size: 24px;
+  padding: 8px;
+  margin: 16px 0;
+  color: #f6f3db;
+  text-align: left;
+  background: #6c6c6c3d;
+  width: 500px;
+  border-radius: 16px;
+  transform: translateX(38rem);
+}
+#transections h6 {
+  opacity: 0.6;
+}
+#transections h6,
+#transections h3,
+#transections h4 {
+  margin: 8px 0;
+}
+#transections {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 1024px;
+  text-align: center;
+  font-size: 57.65px;
+  color: #000;
+  font-family: Inter;
+}

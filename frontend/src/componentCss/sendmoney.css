@@ -1,0 +1,105 @@
+#send-money .send-money-child {
+  left: 946px;
+  border-radius: 96px;
+  font-size: 36px;
+  width: 260px;
+  text-align: center;
+  height: 110px;
+}
+#send-money .send-money-child,
+#send-money .send-money-inner,
+#send-money .send-money-item {
+  color: #f4f4f4;
+  position: absolute;
+  top: 861px;
+  background-color: #1b1b1b;
+}
+#send-money .send-money-item {
+  border: 0;
+  outline: 0;
+  left: 146px;
+  border-radius: 96px;
+  font-size: 36px;
+  width: 363px;
+  text-align: center;
+  height: 110px;
+}
+#send-money .send-money-inner {
+  left: 1215px;
+  border-radius: 50%;
+  width: 107px;
+  cursor: pointer;
+  height: 102px;
+}
+#send-money .div1,
+#send-money .tpin {
+  position: absolute;
+  top: 881px;
+  left: 1023px;
+  opacity: 0.44;
+}
+#send-money .div1 {
+  left: 291px;
+}
+#send-money .div1 {
+  top: 64px;
+  left: 121px;
+  font-size: 36px;
+  letter-spacing: -0.05em;
+  color: #000;
+  text-align: center;
+  display: inline-block;
+  width: 228px;
+}
+#send-money .ellipse-div,
+#send-money .rectangle-div {
+  position: absolute;
+  top: 86px;
+  left: 146px;
+  overflow-y: auto;
+  border-radius: 53px;
+  background-color: #1b1b1b;
+  width: 1176px;
+  height: 683px;
+}
+#send-money .ellipse-div {
+  top: 51px;
+  left: 51px;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+#send-money .recever {
+  transform: translateX(0);
+}
+#send-money ul li {
+  list-style: none;
+  font-size: 24px;
+  padding: 8px;
+  margin: 16px 0;
+  text-align: left;
+  background: #6c6c6c3d;
+  width: 500px;
+  border-radius: 16px;
+  transform: translateX(40rem);
+}
+#send-money h6 {
+  opacity: 0.6;
+}
+#send-money h6,
+#send-money h3,
+#send-money h4 {
+  margin: 8px 0;
+}
+#send-money {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  text-align: center;
+  font-size: 57.65px;
+  color: #f4f4f4;
+  font-family: Inter;
+  transform: scale(0.7);
+  margin: -33px;
+  transform: translate(84px, -3px) scale(0.7);
+}

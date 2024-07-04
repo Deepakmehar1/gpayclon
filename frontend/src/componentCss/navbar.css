@@ -1,0 +1,63 @@
+#navbar .logo {
+  text-decoration: none;
+  color: inherit;
+}
+#navbar .logout {
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 32px;
+  font-weight: 600;
+  font-family: Inter;
+  color: #fff;
+  text-align: center;
+  width: 119px;
+  border: 2px solid #676767;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+#navbar .home,
+#navbar .add-money,
+#navbar .send-money,
+#navbar .transection {
+  text-decoration: none;
+  letter-spacing: 0.2em;
+  font-size: 1.2rem;
+  opacity: 0.7;
+  color: inherit;
+}
+#navbar .send-money-parent {
+  opacity: 0.7;
+  display: flex;
+  gap: 24px;
+  /*   position: absolute;
+  margin: 0 !important;
+  top: calc(50% - 24.5px);
+  left: calc(50% - 575px);
+  width: 1281.83px;
+  height: 48px;
+  z-index: 2; */
+}
+#navbar {
+  width: 111%;
+  height: 77px;
+  /* flex-direction: row; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1b1b1b;
+  border-radius: 16px;
+  padding: 24px;
+  /* 
+  position: relative;
+
+  overflow: hidden; */
+
+  box-sizing: border-box;
+  gap: 10px;
+  text-align: center;
+  font-size: 32px;
+  color: #fff;
+  font-family: Inter;
+  transform: scale(0.7) translateX(-100px);
+}

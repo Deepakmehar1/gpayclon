@@ -1,0 +1,197 @@
+/* -----------loginccss */
+.login .bg {
+  position: absolute;
+  top: 0;
+  left: 207px;
+  background: linear-gradient(180deg, #424343, #222 71.6%, #000);
+  width: 860px;
+  height: 900px;
+}
+.login .left-content-child {
+  position: absolute;
+  top: 549px;
+  left: -54px;
+  width: 638px;
+  height: 583px;
+  border-radius: 50%;
+  border: 5px solid;
+}
+.login .nocash,
+.login .the-most-popular {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.login .the-most-popular {
+  top: 60px;
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+}
+.login .nocash-parent {
+  width: 352px;
+  height: 87px;
+}
+.login .nocash-parent,
+.login .read-more {
+  position: relative;
+  text-decoration: none;
+  color: aliceblue;
+}
+.login .read-more-wrapper {
+  border-radius: var(--br-11xl);
+  background-color: var(--color-royalblue);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 30px;
+  font-size: var(--font-size-sm);
+}
+.login .group-parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 23px;
+}
+.login .content,
+.login .left-content {
+  position: absolute;
+  top: 371px;
+  left: 364px;
+  width: 352px;
+  height: 147px;
+}
+.login .left-content {
+  top: -40px;
+  left: -207px;
+  width: 1067px;
+  height: 1203px;
+}
+.login .forgot-password,
+.login .welcome-back-boss {
+  position: absolute;
+  top: 39px;
+  left: 0;
+  font-size: var(--font-size-lg);
+}
+.login .forgot-password {
+  top: 335px;
+  left: 96px;
+  font-size: var(--font-size-sm);
+  opacity: 0.7;
+}
+.login .new-user {
+  top: 359px;
+  width: 100%;
+  left: 60px;
+  font-size: var(--font-size-sm);
+  opacity: 0.7;
+}
+.login .title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 212px;
+  height: 356px;
+  font-size: 26px;
+}
+.login .placeholder {
+  position: relative;
+  width: 37px;
+  height: 21px;
+}
+.login .button {
+  position: absolute;
+  top: 261px;
+  left: 0;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-royalblue);
+  width: 307px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-lg) var(--padding-7xl);
+  box-sizing: border-box;
+  color: var(--white);
+}
+.login .bxbxs-lock-alt-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  opacity: 0.7;
+}
+.login .placeholder1 {
+  position: relative;
+  width: 100px;
+  height: 24px;
+}
+.login .password {
+  position: absolute;
+  top: 185px;
+  left: 0;
+  border-radius: var(--br-11xl);
+  background-color: var(--white);
+  border: 1px solid var(--color-whitesmoke);
+  box-sizing: border-box;
+  width: 307px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--padding-lg) var(--padding-7xl);
+}
+.login .mobile-number {
+  position: absolute;
+  top: 2px;
+  left: 32px;
+  opacity: 0.7;
+}
+.login .placeholder2 {
+  position: relative;
+  width: 140px;
+  height: 24px;
+}
+.login .email,
+.login .right-content {
+  position: absolute;
+  width: 307px;
+}
+.login .email {
+  top: 109px;
+  left: 0;
+  border-radius: var(--br-11xl);
+  background-color: var(--white);
+  border: 1px solid var(--color-whitesmoke);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--padding-lg) var(--padding-7xl);
+}
+.login .right-content {
+  top: 232px;
+  left: 973px;
+  height: 356px;
+  font-size: var(--font-size-sm);
+  color: var(--color-darkslategray);
+}
+.login {
+  position: relative;
+  background-color: var(--white);
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  text-align: left;
+  font-size: 40px;
+  color: var(--white);
+  font-family: var(--font-poppins);
+}
