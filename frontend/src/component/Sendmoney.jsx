@@ -12,7 +12,7 @@ function Sendmoney() {
   const [pic, setPic] = useState("");
   const [transection, setTransection] = useState("");
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${userphoneNum}/transections`, {
+    fetch(`/user/${userphoneNum}/transections`, {
       method: "get",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -27,7 +27,7 @@ function Sendmoney() {
   }, [success]);
   useEffect(() => {
     if (success !== "") {
-      fetch(`http://localhost:5000/cashback`, {
+      fetch(`/cashback`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ function Sendmoney() {
         .then((result) => {
           console.log("cashbacck", result);
           if (result.cashback !== 0) {
-            fetch("http://localhost:5000/addmoney", {
+            fetch("/addmoney", {
               method: "post",
               headers: {
                 "Content-Type": "application/json",
@@ -63,7 +63,7 @@ function Sendmoney() {
 
   const PostData = () => {
     // console.log(amount,tpin,userphoneNum);
-    fetch(`http://localhost:5000/user/${userphoneNum}/transfer`, {
+    fetch(`/user/${userphoneNum}/transfer`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

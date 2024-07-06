@@ -15,7 +15,7 @@ function FirstLogin() {
     } else if (amount == "0") {
       console.log("minimum amound is 1");
     } else {
-      fetch("http://localhost:5000/addmoney", {
+      fetch("/addmoney", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -46,7 +46,7 @@ function FirstLogin() {
     } else if (!image) {
       console.log("please add all fields", "error");
     } else {
-      await fetch("http://localhost:5000/addmoney", {
+      await fetch("/addmoney", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +64,7 @@ function FirstLogin() {
           console.log(err);
         });
 
-      await fetch("http://localhost:5000/picfile", {
+      await fetch("/picfile", {
         method: "post",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),

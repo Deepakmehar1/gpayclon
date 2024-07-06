@@ -9,7 +9,7 @@ function Register() {
   const [password, setPassword] = useState("");
 
   const PostData = () => {
-    fetch("http://localhost:5000/register", {
+    fetch("/register", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

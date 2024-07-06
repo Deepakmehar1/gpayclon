@@ -6,7 +6,7 @@ function Searchuser() {
   const [phoneNum, setPhonenum] = useState("");
   const [user, setUser] = useState("");
   const PostData = () => {
-    fetch("http://localhost:5000/search-user", {
+    fetch("/search-user", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

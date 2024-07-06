@@ -8,7 +8,7 @@ function Transections() {
   const [transections, setTransections] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/mytransection`, {
+    fetch(`/mytransection`, {
       method: "get",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),

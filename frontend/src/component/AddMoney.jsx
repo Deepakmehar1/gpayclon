@@ -11,7 +11,7 @@ function Addmoney() {
     } else if (amount == "0") {
       console.log("minimum amound is 1");
     } else {
-      fetch("http://localhost:5000/addmoney", {
+      fetch("/addmoney", {
         method: "post",
         headers: {
           "Content-Type": "application/json",

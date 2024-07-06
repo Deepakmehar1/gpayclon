@@ -7,7 +7,7 @@ function Home() {
   const [balence, setBalence] = useState("");
 
   const PostData = () => {
-    fetch("http://localhost:5000/balence", {
+    fetch("/balence", {
       method: "get",
       headers: {
         "Content-Type": "application/json",
