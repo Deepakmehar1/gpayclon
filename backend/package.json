@@ -5,7 +5,9 @@
   "author": "deepak",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
