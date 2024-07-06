@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+    "build": "yarn && yarn --cwd frontend install && yarn --cwd frontend build"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
